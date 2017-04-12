@@ -11,6 +11,7 @@ settings.py
 # Distribution / packaging
 .Python
 venv/
+.idea/
 build/
 develop-eggs/
 dist/
