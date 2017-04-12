@@ -40,9 +40,15 @@ class Usuario(AbstractBaseUser):
     email = models.EmailField(verbose_name='Email', unique=True)
     is_active = models.BooleanField(default=True, verbose_name='Ativo')
     is_admin = models.BooleanField(default=False, verbose_name='Administrador')
+    USER_TYPES = (
+        ('F', 'Funcionário'),
+        ('M', 'Motorista'),
+    )
+    tipo = models.CharField(max_length=1, default='F', choices=USER_TYPES, verbose_name='Tipo')
 
     USERNAME_FIELD = 'email'
     objects = UserManager()
+
     def get_full_name(self):
         return self.nome
 
@@ -61,3 +67,42 @@ class Usuario(AbstractBaseUser):
     @property
     def is_staff(self):
         return self.is_admin
+
+    class Meta:
+        verbose_name = 'Usuário'
+        verbose_name_plural = 'Usuários'
+
+
+class Motorista(models.Model):
+    cpf = models.CharField(max_length=11, verbose_name='CPF')
+    rg = models.CharField(max_length=10, verbose_name='RG')
+    orgao_emissor = models.CharField(max_length=10, verbose_name='Orgão Emissor')
+    data_nascimento = models.DateField(verbose_name='Data de Nascimento')
+    cnh_numero = models.CharField(max_length=11, verbose_name='Número CNH')
+    cnh_primeira = models.DateField(verbose_name='Primeira CNH')
+    cnh_validade = models.DateField(verbose_name='Validade CNH')
+    status_tipo = (
+        ('E', 'Em Análise'),
+        ('A', 'Aprovado'),
+        ('R', 'Reprovado')
+    )
+    status = models.CharField(max_length=1, choices=status_tipo, verbose_name='Status')
+
+    class Meta:
+        verbose_name = 'Motorista'
+        verbose_name_plural = 'Motoristas'
+
+class Carro(models.Model):
+    marca = models.CharField(max_length=30, verbose_name='Marca')
+    modelo = models.CharField(max_length=30, verbose_name='Modelo')
+    cor = models.CharField(max_length=10, verbose_name='Cor')
+    placa = models.CharField(max_length=7, verbose_name='Placa')
+    motorista = models.ForeignKey(
+        'base.Motorista',
+        on_delete=models.DO_NOTHING,
+        verbose_name='Motorista'
+    )
+
+    class Meta:
+        verbose_name = 'Carro'
+        verbose_name_plural = 'Carros'
