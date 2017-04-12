@@ -38,12 +38,11 @@ class UserManager(BaseUserManager):
 class Usuario(AbstractBaseUser):
     nome = models.CharField(max_length=100, verbose_name='Nome')
     email = models.EmailField(verbose_name='Email', unique=True)
-    senha = models.CharField(max_length=100, verbose_name='')
     is_active = models.BooleanField(default=True, verbose_name='Ativo')
     is_admin = models.BooleanField(default=False, verbose_name='Administrador')
 
     USERNAME_FIELD = 'email'
-
+    objects = UserManager()
     def get_full_name(self):
         return self.nome
 
