@@ -154,3 +154,24 @@ body{
 .padding-right-xs{
   padding-right:5px;
 }
+.item-motorista{
+  padding-top:10px;
+  padding-bottom:10px;
+  border-bottom:1px solid #EEEEEE;
+  -webkit-transition: all 200ms linear;
+  -moz-transition: all 200ms linear;
+  -o-transition: all 200ms linear;
+  -ms-transition: all 200ms linear;
+  transition: all 200ms linear;
+}
+.item-motorista:hover{
+  background-color: #F5F5F5;
+}
+.item-motorista p{
+  margin-bottom:0px;
+}
+.item-motorista-nome{
+  white-space: nowrap;
+ overflow: hidden;
+ text-overflow: ellipsis;
+}
