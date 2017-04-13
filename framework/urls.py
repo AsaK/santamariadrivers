@@ -20,8 +20,9 @@ from django.views.generic import TemplateView
 
 urlpatterns = [
     url(r'^$', TemplateView.as_view(template_name='index.html'), name='home'),
-    url(r'^admin/', admin.site.urls, name='admin'),
-    url(r'^login$', LoginView.as_view(), name='login'),
+    url(r'^devadmin/', admin.site.urls, name='admin'),
+    url(r'^admin$', LoginView.as_view(template_name='login_admin.html'), name='login'),
+    url(r'^motorista$', LoginView.as_view(template_name='login_motorista.html'), name='login'),
     url(r'^logout$', LogoutView.as_view(), name='logout'),
 
 ]
