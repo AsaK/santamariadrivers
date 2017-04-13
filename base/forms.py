@@ -1,5 +1,5 @@
 from django.forms import ModelForm
-from .models import Motorista
+from .models import Motorista, Carro
 
 
 class MotoristaForm(ModelForm):
@@ -9,6 +9,7 @@ class MotoristaForm(ModelForm):
         fields = '__all__'
 
     def __init__(self, *args, **kwargs):
+
         super(MotoristaForm, self).__init__(*args, **kwargs)
 
         self.fields['cpf'].widget.attrs['class'] = ''
@@ -31,3 +32,28 @@ class MotoristaForm(ModelForm):
 
         self.fields['cnh_validade'].widget.attrs['class'] = ''
         self.fields['cnh_validade'].widget.attrs['placeholder'] = 'Validade da CNH'
+
+
+class CarroForm(ModelForm):
+
+    class Meta:
+
+        model = Carro
+        fields = '__all__'
+
+    def __init__(self, *args, **kwargs):
+
+        super(CarroForm, self).__init__(*args, **kwargs)
+
+        self.fields['marca'].widget.attrs['class'] = ''
+        self.fields['marca'].widget.attrs['placeholder'] = 'Marca'
+
+        self.fields['modelo'].widget.attrs['class'] = ''
+        self.fields['modelo'].widget.attrs['placeholder'] = 'Modelo'
+
+        self.fields['cor'].widget.attrs['class'] = ''
+        self.fields['cor'].widget.attrs['placeholder'] = 'Cor'
+
+        self.fields['placa'].widget.attrs['class'] = ''
+        self.fields['placa'].widget.attrs['placeholder'] = 'Placa'
+
