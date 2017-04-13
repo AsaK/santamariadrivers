@@ -74,6 +74,7 @@ class Usuario(AbstractBaseUser):
 
 
 class Motorista(models.Model):
+    nome = models.CharField(max_length=100, verbose_name='Nome')
     cpf = models.CharField(max_length=11, verbose_name='CPF')
     rg = models.CharField(max_length=10, verbose_name='RG')
     orgao_emissor = models.CharField(max_length=10, verbose_name='Orgão Emissor')
@@ -83,6 +84,11 @@ class Motorista(models.Model):
     cnh_validade = models.DateField(verbose_name='Validade CNH')
     cnh_categoria = models.CharField(max_length=2, verbose_name='Categoria CNH')
     motivo = models.TextField(max_length=150, verbose_name='Motivo de recusa', blank=True, null=True)
+    marca = models.CharField(max_length=30, verbose_name='Marca do carro')
+    modelo = models.CharField(max_length=30, verbose_name='Modelo do carro')
+    cor = models.CharField(max_length=10, verbose_name='Cor do carro')
+    placa = models.CharField(max_length=7, verbose_name='Placa do carro')
+    ano = models.CharField(max_length=4, verbose_name='Ano do carro')
     status_tipo = (
         ('E', 'Em Análise'),
         ('A', 'Aprovado'),
@@ -98,26 +104,11 @@ class Motorista(models.Model):
         verbose_name='Foto Perfil',
         upload_to='motoristas/'
     )
-
-    class Meta:
-        verbose_name = 'Motorista'
-        verbose_name_plural = 'Motoristas'
-
-class Carro(models.Model):
-    marca = models.CharField(max_length=30, verbose_name='Marca')
-    modelo = models.CharField(max_length=30, verbose_name='Modelo / Ano')
-    cor = models.CharField(max_length=10, verbose_name='Cor')
-    placa = models.CharField(max_length=7, verbose_name='Placa')
-    motorista = models.ForeignKey(
-        'base.Motorista',
-        on_delete=models.DO_NOTHING,
-        verbose_name='Motorista'
-    )
-    foto = models.ImageField(
-        verbose_name='Foto',
+    foto_carro = models.ImageField(
+        verbose_name='Foto do Carro',
         upload_to='carros/'
     )
 
     class Meta:
-        verbose_name = 'Carro'
-        verbose_name_plural = 'Carros'
+        verbose_name = 'Motorista'
+        verbose_name_plural = 'Motoristas'

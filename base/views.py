@@ -5,22 +5,30 @@ from django.core import serializers
 from django.shortcuts import render, redirect
 from django.views.generic.edit import UpdateView, CreateView
 from django.core.urlresolvers import reverse_lazy
-from .models import Motorista, Carro
-from .forms import MotoristaForm, CarroForm
-from django.http import HttpResponse
+from .models import Motorista
+from .forms import MotoristaForm
+from django.http import HttpResponse, JsonResponse
+from django.core.paginator import Paginator
 
 
 # Create your views here.
 
 
 def listmotoristaview(request):
-    template_name = 'Motorista/motorista_list.html'
-    status = request.POST.get('data[status]')
+    status = request.GET.get('status', None)
+    page = request.GET.get('page', None)
+    queryset = Motorista.objects.all()
+    paginator = Paginator(queryset, 10)
     if status:
-        message = serializers.serialize("json", Motorista.objects.filter(status=status))
+        queryset = queryset.filter(status=status)
+        paginator = Paginator(queryset, 2)
+        if page:
+            message = serializers.serialize("json", paginator.page(page))
+        else:
+            message = serializers.serialize("json", paginator.page(1))
         return HttpResponse(message, content_type="application/json")
     else:
-        message = serializers.serialize("json", Motorista.objects.all())
+        message = serializers.serialize("json", paginator.page(1))
         return HttpResponse(message, content_type="application/json")
 
 
@@ -29,33 +37,6 @@ class UpdateMotoristaView(UpdateView):
     template_name = 'Motorista/motorista_update.html'
     form_class = MotoristaForm
     success_url = reverse_lazy('drivers')
-
-
-class CreateCarroView(CreateView):
-    model = Carro
-    template_name = 'Carro/carro_register.html'
-
-
-class UpdateCarroView(UpdateView):
-    model = Carro
-    form_class = CarroForm
-    template_name = 'Carro/carro_update.html'
-
-
-def deletecarro(request, idCarro):
-
-    if request.method == 'GET':
-
-        if idCarro:
-            objCarro = Carro.objects.get(id=idCarro)
-
-            if objCarro:
-
-                Carro.delete()
-                return redirect('drivers')
-
-    return redirect('drivers')
-
 
 def deletemotorista(request, idMotorista):
 
