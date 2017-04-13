@@ -87,6 +87,11 @@ class Motorista(models.Model):
         ('R', 'Reprovado')
     )
     status = models.CharField(max_length=1, choices=status_tipo, verbose_name='Status')
+    usuario = models.ForeignKey(
+        'base.Usuario',
+        on_delete=models.DO_NOTHING,
+        verbose_name='Usuário'
+    )
 
     class Meta:
         verbose_name = 'Motorista'
