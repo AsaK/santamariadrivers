@@ -92,6 +92,10 @@ class Motorista(models.Model):
         on_delete=models.DO_NOTHING,
         verbose_name='Usuário'
     )
+    foto = models.ImageField(
+        verbose_name='Foto Perfil',
+        upload_to='motoristas/'
+    )
 
     class Meta:
         verbose_name = 'Motorista'
@@ -106,6 +110,10 @@ class Carro(models.Model):
         'base.Motorista',
         on_delete=models.DO_NOTHING,
         verbose_name='Motorista'
+    )
+    foto = models.ImageField(
+        verbose_name='Foto',
+        upload_to='carros/'
     )
 
     class Meta:

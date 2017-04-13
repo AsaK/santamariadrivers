@@ -4,12 +4,13 @@ from django.views.generic import FormView, RedirectView
 from django.shortcuts import redirect
 from django.contrib.auth import login, logout
 from .forms import LoginForm
+from django.core.urlresolvers import reverse_lazy
 
 
 class LoginView(FormView):
-    temnplate_name = ''
     form_class = LoginForm
-    success_url = ''
+    success_url = reverse_lazy('home')
+    template_name = 'Geral/login.html'
 
     def dispatch(self, request, *args, **kwargs):
         if request.user.is_authenticated():
@@ -19,10 +20,11 @@ class LoginView(FormView):
 
     def form_valid(self, form):
         login(self.request, form.get_user())
+        return super(LoginView, self).form_valid(form)
         
 
 class LogoutView(RedirectView):
-    url = ''
+    url = reverse_lazy('login')
     
     def get(self, request, *args, **kwargs):
         logout(request)
