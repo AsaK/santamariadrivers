@@ -17,7 +17,6 @@ from django.views.generic import TemplateView
 from django.conf.urls import include, url
 from django.contrib import admin
 from core.views import LoginView, LogoutView
-from base import views
 
 urlpatterns = [
     url(r'^drivers/', include('base.urls')),
