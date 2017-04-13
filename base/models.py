@@ -94,9 +94,7 @@ class Motorista(models.Model):
     )
     foto = models.ImageField(
         verbose_name='Foto Perfil',
-        upload_to='motoristas/',
-        blank=True,
-        null=True
+        upload_to='motoristas/'
     )
 
     class Meta:
@@ -115,9 +113,7 @@ class Carro(models.Model):
     )
     foto = models.ImageField(
         verbose_name='Foto',
-        upload_to='carros/',
-        blank=True,
-        null=True
+        upload_to='carros/'
     )
 
     class Meta:
