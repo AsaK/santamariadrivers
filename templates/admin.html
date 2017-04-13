@@ -57,7 +57,7 @@
 												<li class="dropdown">
 															<a href="#" class="dropdown-toggle" data-toggle="dropdown">
 																		<i class="ti-user"></i>
-																		<p>André Luiz Júnior</p>
+																		<p>{{ request.user.nome }}</p>
 																		<b class="caret"></b>
 															</a>
 															<ul class="dropdown-menu">
@@ -163,8 +163,8 @@
                     <div class="col-md-12">
                         <div class="card">
                             <div class="header">
-                                <h3 class="title font-bold">Lista de motoristas <button class="btn btn-primary border-width-xs btn_square btn-fill pull-right"><i class="ti-cloud-down font-sm"></i> Baixar relatório</button></h3>
-                                <p class="category">Confira a lista de motoristas cadastrados no sistema</p>
+                                <h3 class="title font-bold">Lista de motoristas <button class="btn btn-primary border-width-xs btn_square btn-fill pull-right hidden-xs"><i class="ti-cloud-down font-sm"></i> Baixar relatório</button></h3>
+                                <p class="category hidden-xs">Confira a lista de motoristas cadastrados no sistema</p>
                             </div>
                             <div class="content table-responsive table-full-width">
                                 <table class="table table-striped">
@@ -178,7 +178,7 @@
 																		</thead>
                                     <tbody>
                                         <tr>
-                                        	<td><i class="fa fa-circle icon-success fa-fw"></i> <a href="#">André Luiz Júnior <i class="ti-pencil font-sm"></i></a></td>
+                                        	<td><a href="#">André Luiz Júnior</a></td>
                                         	<td>allcj@cin.ufpe.br</td>
                                         	<td>(81)984755041</td>
                                         	<td class="text-center">
@@ -191,7 +191,7 @@
 																					</td>
                                         </tr>
 																				<tr>
-                                        	<td><i class="fa fa-circle icon-success fa-fw"></i> <a href="#">Capitão Glaydson Alves Analista de Teste Mestre</a></td>
+                                        	<td><a href="#">Capitão Glaydson Alves Analista de Teste Mestre</a></td>
                                         	<td>allcj@cin.ufpe.br</td>
                                         	<td>(81)984755041</td>
                                         	<td class="text-center">
@@ -204,7 +204,7 @@
 																					</td>
                                         </tr>
 																				<tr>
-                                        	<td><i class="fa fa-circle icon-success fa-fw"></i> <a href="#">Erickson Holanda Designer Topado</a></td>
+                                        	<td><a href="#">Erickson Holanda Designer Topado</a></td>
                                         	<td>allcj@cin.ufpe.br</td>
                                         	<td>(81)984755041</td>
                                         	<td class="text-center">
@@ -218,7 +218,27 @@
                                         </tr>
                                     </tbody>
                                 </table>
-
+																{% if page_obj.has_previous %}
+												            <li class="page-item">
+												                <a class="page-link" href="?page={{ page_obj.previus_page_number }}">Anterior</a>
+												            </li>
+												        {% endif %}
+												        {% for page in page_obj.paginator.page_range %}
+												            {% if page_obj.number == page %}
+												                <li class="page-item active">
+												                    <a class="page-link">{{ page }}</a>
+												                </li>
+												            {% else %}
+												                <li class="page-item">
+												                    <a class="page-link" href="?page={{ page }}">{{ page }}</a>
+												                </li>
+												            {% endif %}
+												        {% endfor %}
+												        {% if page_obj.has_next %}
+												            <li class="page-item">
+												                <a class="page-link" href="?page={{ page_obj.next_page_number }}">Proxima</a>
+												            </li>
+												        {% endif %}
                             </div>
                         </div>
                     </div>
