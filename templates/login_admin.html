@@ -48,7 +48,7 @@
 
 				<div class="col-xs-11 col-md-3 centered" id="login_motorista">
 					<div class="card padding-md">
-						<form method="post">
+						<form method="post" id="form-login-admin">
 							{% csrf_token %}
 							<h4 class="col-xs-12 font-light nomargin-top">// Login </br><small>Área administrativa</small></h4>
 							<div class="form-group col-xs-12 nomargin">
@@ -121,6 +121,7 @@
 					var pass_field = $('input[name=password]');
 
 					email_field.focus();
+					
         	/*demo.initChartist();
 
         	$.notify({

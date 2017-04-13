@@ -37,6 +37,97 @@
 </head>
 <body>
 
+	<div class="modal fade" tabindex="-1" role="dialog" id="modal_confirm">
+	  <div class="modal-dialog" role="document">
+	    <div class="modal-content">
+	      <div class="modal-header">
+	        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+	        <h4 class="modal-title">Perfil do motorista</h4>
+	      </div>
+	      <div class="modal-body">
+					<div>
+		        <div class="col-xs-4 col-md-3">
+							<img src="https://placeholdit.imgix.net/~text?txtsize=33&txt=FOTO%20DO%20MOTORISTA&w=300&h=300" class="img-responsive" />
+						</div>
+						<div class="col-xs-8 col-md-6">
+							<p class="font-grey margin-bottom-xs font-xs">
+								Nome do motorista
+							</p>
+							<h4 class="nomargin-top font-sm font-bold">Erickson Holanda Vasconcelos</h4>
+							<p class="font-grey margin-bottom-xs font-xs">
+								Email
+							</p>
+							<h4 class="nomargin-top font-sm font-bold">e.holanda@supportclik.com</h4>
+							<p class="font-grey margin-bottom-xs font-xs">
+								Endereço
+							</p>
+							<h4 class="nomargin-top font-sm font-bold">Av. Tente Felipe Bandeira, Recife/PE</h4>
+						</div>
+						<div class="col-xs-offset-4 col-xs-8 col-md-offset-0 col-md-3">
+							<p class="font-grey margin-bottom-xs font-xs">
+								Data de nascimento
+							</p>
+							<h4 class="nomargin-top font-sm font-bold">06/05/1991</h4>
+							<p class="font-grey margin-bottom-xs font-xs">
+								RG
+							</p>
+							<h4 class="nomargin-top font-sm font-bold">7.791.855</h4>
+							<p class="font-grey margin-bottom-xs font-xs">
+								CPF
+							</p>
+							<h4 class="nomargin-top font-sm font-bold">079.848.344-07</h4>
+						</div>
+						<div class="clear"></div>
+					</div>
+
+
+					<div class="clear"></div>
+
+
+					<div class="margin-top-lg">
+		        <div class="col-xs-4 col-md-3">
+							<img src="https://placeholdit.imgix.net/~text?txtsize=33&txt=FOTO%20DO%20CARRO&w=300&h=300" class="img-responsive" />
+						</div>
+						<div class="col-xs-8 col-md-6">
+							<p class="font-grey margin-bottom-xs font-xs">
+								Número da CNH
+							</p>
+							<h4 class="nomargin-top font-sm font-bold">22111223312</h4>
+							<p class="font-grey margin-bottom-xs font-xs">
+								Modelo do automóvel
+							</p>
+							<h4 class="nomargin-top font-sm font-bold">Chevrolet Zafira</h4>
+							<p class="font-grey margin-bottom-xs font-xs">
+								Ano do automóvel
+							</p>
+							<h4 class="nomargin-top font-sm font-bold">2010</h4>
+						</div>
+						<div class="col-xs-offset-4 col-xs-8 col-md-offset-0 col-md-3">
+							<p class="font-grey margin-bottom-xs font-xs">
+								Data de expedição
+							</p>
+							<h4 class="nomargin-top font-sm font-bold">21/05/2009</h4>
+							<p class="font-grey margin-bottom-xs font-xs">
+								Data de validade
+							</p>
+							<h4 class="nomargin-top font-sm font-bold">22/05/2020</h4>
+							<p class="font-grey margin-bottom-xs font-xs">
+								Placa do automóvel
+							</p>
+							<h4 class="nomargin-top font-sm font-bold">KGB - 1954</h4>
+						</div>
+						<div class="clear"></div>
+					</div>
+	      </div>
+	      <div class="modal-footer">
+					<!-- <button type="button" class="btn btn-primary btn-simple pull-left"><i class="ti-pencil font-sm"></i> Editar</button> -->
+	        <button type="button" class="btn btn_square btn-success btn-fill"><i class="ti-check font-sm"></i> Aprovar</button>
+	        <button type="button" class="btn btn-danger btn_square btn-fill" data-dismiss="modal" id="btn_recusar"><i class="ti-close font-sm"></i> Recusar</button>
+	      </div>
+	    </div><!-- /.modal-content -->
+	  </div><!-- /.modal-dialog -->
+	</div><!-- /.modal -->
+
 <div class="wrapper">
 	<div class="col-md-10 centered">
     <div class="main-panel">
@@ -44,7 +135,7 @@
             <div class="container-fluid">
                 <div class="navbar-header">
                     <button type="button" class="navbar-toggle">
-                        <i class="ti-power-off"></i>
+                        <a href="{% url 'logout' %}"><i class="ti-power-off"></i></a>
                     </button>
                     <a class="navbar-brand" href="#">Área Administrativa</a>
                 </div>
@@ -53,12 +144,11 @@
 
 												<li class="dropdown">
 															<a href="#" class="dropdown-toggle" data-toggle="dropdown">
-																		<i class="ti-user"></i>
-																		<p>{{ request.user.nome }}</p>
-																		<b class="caret"></b>
+																<p>{{ request.user.email }}</p>
+																<b class="caret"></b>
 															</a>
 															<ul class="dropdown-menu">
-																<li><a href="#">Sair do sistema</a></li>
+																<li><a href="{% url 'logout' %}">Sair do sistema</a></li>
 															</ul>
 												</li>
                     </ul>
@@ -319,16 +409,11 @@
 	<script type="text/javascript">
     	$(document).ready(function(){
 
-        	/*demo.initChartist();
+				$("#modal_confirm").modal('show');
 
-        	$.notify({
-            	icon: 'ti-gift',
-            	message: "Welcome to <b>Paper Dashboard</b> - a beautiful Bootstrap freebie for your next project."
-
-            },{
-                type: 'success',
-                timer: 4000
-            });*/
+				$("#btn_recusar").click(function(){
+					
+				});
 
     	});
 	</script>
