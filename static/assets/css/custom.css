@@ -79,7 +79,7 @@ body{
   z-index: 999;
 }
 #body_entrypoint{
-  background-image: url('../img/background/bg_car_2.png');
+  background-image: url('../img/background/bg_car_3.png');
 }
 #content_entrypoint{
   padding:30px;
@@ -177,4 +177,15 @@ body{
 }
 .font-xs{
   font-size:0.6em;
+}
+.btn-primary-custom{
+  background-color: #0066E2 !important;
+  color:#FFFFFF;
+  border-color: #0066E2 !important;
+}
+
+.btn-default-custom{
+  background-color: #333333 !important;
+  color: #FFFFFF;
+  border-color: #333333 !important;
 }
