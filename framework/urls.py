@@ -20,11 +20,11 @@ from django.views.generic import TemplateView
 
 urlpatterns = [
     url(r'^$', TemplateView.as_view(template_name='index.html'), name='index'),
-    url(r'^base/', include('base.urls')),
     url(r'^dashboard$', TemplateView.as_view(template_name='admin.html'), name='dashboard'),
     url(r'^devadmin/', admin.site.urls, name='admin'),
-    url(r'^admin$', LoginView.as_view(template_name='login_admin.html'), name='login_admin'),
-    url(r'^motorista$', LoginView.as_view(template_name='login_motorista.html'), name='login_motorista'),
+    url(r'^motorista/', LoginView.as_view(template_name='login_motorista.html'), name='login_motorista'),
+    url(r'^admin/', LoginView.as_view(template_name='login_admin.html'), name='login_admin'),
     url(r'^logout$', LogoutView.as_view(), name='logout'),
+    url(r'^base/', include('base.urls')),
 
 ]
