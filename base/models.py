@@ -81,6 +81,8 @@ class Motorista(models.Model):
     cnh_numero = models.CharField(max_length=11, verbose_name='Número CNH')
     cnh_primeira = models.DateField(verbose_name='Primeira CNH')
     cnh_validade = models.DateField(verbose_name='Validade CNH')
+    cnh_categoria = models.CharField(max_length=2, verbose_name='Categoria CNH')
+    motivo = models.TextField(max_length=150, verbose_name='Motivo de recusa', blank=True, null=True)
     status_tipo = (
         ('E', 'Em Análise'),
         ('A', 'Aprovado'),
@@ -103,7 +105,7 @@ class Motorista(models.Model):
 
 class Carro(models.Model):
     marca = models.CharField(max_length=30, verbose_name='Marca')
-    modelo = models.CharField(max_length=30, verbose_name='Modelo')
+    modelo = models.CharField(max_length=30, verbose_name='Modelo / Ano')
     cor = models.CharField(max_length=10, verbose_name='Cor')
     placa = models.CharField(max_length=7, verbose_name='Placa')
     motorista = models.ForeignKey(
