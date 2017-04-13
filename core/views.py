@@ -9,7 +9,7 @@ from django.core.urlresolvers import reverse_lazy
 
 class LoginView(FormView):
     form_class = LoginForm
-    success_url = reverse_lazy('index')
+    success_url = reverse_lazy('dashboard')
 
     def dispatch(self, request, *args, **kwargs):
         if request.user.is_authenticated():
