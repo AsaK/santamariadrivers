@@ -19,8 +19,7 @@ from django.contrib import admin
 from core.views import LoginView, LogoutView
 
 urlpatterns = [
-    url(r'^drivers/', include('base.urls')),
-    url(r'^cars/', include('base.urls')),
+    url(r'^base/', include('base.urls')),
     url(r'^admin/', admin.site.urls, name='admin'),
     url(r'^login$', LoginView.as_view(), name='login'),
     url(r'^logout$', LogoutView.as_view(), name='logout'),

@@ -40,6 +40,7 @@ class CarroForm(ModelForm):
 
         model = Carro
         fields = '__all__'
+        exclude = ['motorista']
 
     def __init__(self, *args, **kwargs):
 
