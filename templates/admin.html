@@ -276,42 +276,7 @@
 																<p class="category margin-bottom-xs hidden-xs">Confira a lista de motoristas cadastrados no sistema</p>
                             </div>
                             <div class="content">
-                                <!-- <table class="table table-striped">
-                                    <thead>
-                                      <tr>
-																				<th class="font-bold">Nome</th>
-                                    		<th class="font-bold">Email</th>
-                                    		<th class="font-bold">Telefone</th>
-                                    		<th class="font-bold text-center">Status</th>
-                                    	</tr>
-																		</thead>
-                                    <tbody>
-                                        <tr>
-                                        	<td><a href="#">André Luiz Júnior</a></td>
-                                        	<td>allcj@cin.ufpe.br</td>
-                                        	<td>(81)984755041</td>
-                                        	<td class="text-center">
-																						<button class="btn btn-warning border-width-xs btn-fill btn-sm font-sm">Pendente <i class="caret"></i></button>
-																					</td>
-                                        </tr>
-																				<tr>
-                                        	<td><a href="#">Capitão Glaydson Alves Analista de Teste Mestre</a></td>
-                                        	<td>allcj@cin.ufpe.br</td>
-                                        	<td>(81)984755041</td>
-                                        	<td class="text-center">
-																						<button class="btn btn-success border-width-xs btn-simple btn-sm font-sm"><b>Aprovado</b></button>
-																					</td>
-                                        </tr>
-																				<tr>
-                                        	<td><a href="#">Erickson Holanda Designer Topado</a></td>
-                                        	<td>allcj@cin.ufpe.br</td>
-                                        	<td>(81)984755041</td>
-                                        	<td class="text-center">
-																						<button class="btn btn-danger border-width-xs btn-simple btn-sm font-sm"><b>Recusado</b></button>
-																					</td>
-                                        </tr>
-                                    </tbody>
-                                </table> -->
+
 																<h5 class="col-md-6 font-bold">Motorista</h5>
 																<h5 class="col-md-2 font-bold hidden-xs">Email</h5>
 																<h5 class="col-md-2 font-bold hidden-xs">Telefone</h5>
@@ -321,21 +286,23 @@
 
 																</div>
 
-																<div class="item-motorista">
-																	<p class="col-xs-12 col-md-6 font-light item-motorista-nome">
-																		<a href="#">André Luiz Lacerda da Costa Júnior</a>
-																	</p>
-																	<p class="col-xs-12 col-md-2 font-light">
-																		<small>allcj@cin.ufpe.br</small>
-																	</p>
-																	<p class="col-xs-6 col-md-2 font-light">
-																		<small>(81) 98475-5041</small>
-																	</p>
-																	<p class="col-xs-6 col-md-2 font-light text-center">
-																		<button class="btn btn-warning border-width-xs btn-xs btn-fill btn_square">Pendente <i class="caret"></i></button>
-																	</p>
-																	<div class="clear"></div>
-																</div>
+																{% for motorista in object_list %}
+																		<div class="item-motorista">
+																			<p class="col-xs-12 col-md-6 font-light item-motorista-nome">
+																				<a href="#">{{ motorista.nome }}</a>
+																			</p>
+																			<p class="col-xs-12 col-md-2 font-light">
+																				<small>{{ motorista.usuario.email }}</small>
+																			</p>
+																			<p class="col-xs-6 col-md-2 font-light">
+																				<small>(81) 98475-5041</small>
+																			</p>
+																			<p class="col-xs-6 col-md-2 font-light text-center">
+																				<button class="btn btn-warning border-width-xs btn-xs btn-fill btn_square">{{ motorista.situacao }} <i class="caret"></i></button>
+																			</p>
+																			<div class="clear"></div>
+																		</div>
+																{% endfor %}
 
 																<div class="col-xs-12">
 																	<nav aria-label="Page navigation">
@@ -360,28 +327,29 @@
 																</div>
 
 																<div class="clear"></div>
-
-																{% if page_obj.has_previous %}
-												            <li class="page-item">
-												                <a class="page-link" href="?page={{ page_obj.previus_page_number }}">Anterior</a>
-												            </li>
-												        {% endif %}
-												        {% for page in page_obj.paginator.page_range %}
-												            {% if page_obj.number == page %}
-												                <li class="page-item active">
-												                    <a class="page-link">{{ page }}</a>
-												                </li>
-												            {% else %}
-												                <li class="page-item">
-												                    <a class="page-link" href="?page={{ page }}">{{ page }}</a>
-												                </li>
-												            {% endif %}
-												        {% endfor %}
-												        {% if page_obj.has_next %}
-												            <li class="page-item">
-												                <a class="page-link" href="?page={{ page_obj.next_page_number }}">Proxima</a>
-												            </li>
-												        {% endif %}
+																{% if is_paginated %}
+																	{% if page_obj.has_previous %}
+													            <li class="page-item">
+													                <a class="page-link" href="?page={{ page_obj.previus_page_number }}">Anterior</a>
+													            </li>
+													        {% endif %}
+													        {% for page in page_obj.paginator.page_range %}
+													            {% if page_obj.number == page %}
+													                <li class="page-item active">
+													                    <a class="page-link">{{ page }}</a>
+													                </li>
+													            {% else %}
+													                <li class="page-item">
+													                    <a class="page-link" href="?page={{ page }}">{{ page }}</a>
+													                </li>
+													            {% endif %}
+													        {% endfor %}
+													        {% if page_obj.has_next %}
+													            <li class="page-item">
+													                <a class="page-link" href="?page={{ page_obj.next_page_number }}">Proxima</a>
+													            </li>
+													        {% endif %}
+																{% endif %}
                             </div>
                         </div>
                     </div>
