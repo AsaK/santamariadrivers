@@ -5,7 +5,7 @@ from django.http import HttpResponse
 from django.template.loader import render_to_string
 
 import tempfile
-from django.shortcuts import redirect
+from django.shortcuts import redirect, render
 from django.views.generic.edit import UpdateView
 from django.views.generic.list import ListView
 from django.core.urlresolvers import reverse_lazy
@@ -33,6 +33,7 @@ class MotoristaList(ListView):
             queryset = queryset.filter(status=status)
         return queryset
 
+
 class UpdateMotoristaView(UpdateView):
     model = Motorista
     template_name = 'Motorista/motorista_update.html'
@@ -52,4 +53,3 @@ def deletemotorista(request, idMotorista):
                 return redirect('drivers')
 
     return redirect('drivers')
-

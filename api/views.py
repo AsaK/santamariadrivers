@@ -2,7 +2,7 @@ from django.shortcuts import render
 
 # Create your views here.
 
-from base.serializer import MotoristaSerializer
+from .serializer import MotoristaSerializer
 from base.models import Motorista
 
 from rest_framework.response import Response
