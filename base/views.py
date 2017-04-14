@@ -83,3 +83,8 @@ def change_motorista_status(request):
             }
 
             return JsonResponse(message)
+    else:
+        message = {
+            'status': False
+        }
+        return JsonResponse(message)
