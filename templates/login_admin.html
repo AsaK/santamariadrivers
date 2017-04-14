@@ -69,11 +69,11 @@
 									<input class="form-control form-control-custom" placeholder="Digite sua senha" type="password" name="password" required=""/>
 								</div>
 							</div>
-							<div class="form-group col-xs-6 nomargin margin-bottom-md padding-right-xs">
-								<button type="submit" class="btn btn-primary btn-block btn_square font-light btn-fill">Entrar</button>
+							<div class="form-group col-xs-4 nomargin margin-bottom-md padding-right-xs">
+								<a href="{% url 'index' %}" type="submit" class="btn btn-default btn-block btn_square font-light btn-fill btn-default-custom"><i class="ti-arrow-left"></i></a>
 							</div>
-							<div class="form-group col-xs-6 nomargin margin-bottom-md padding-left-xs">
-								<a href="{% url 'index' %}" type="submit" class="btn btn-default btn-block btn_square font-light btn-fill">Cancelar</a>
+							<div class="form-group col-xs-8 nomargin margin-bottom-md padding-left-xs">
+								<button type="submit" class="btn btn-primary btn-block btn_square font-light btn-fill btn-primary-custom">Entrar</button>
 							</div>
 							<div class="clear"></div>
 						</div>
@@ -121,7 +121,7 @@
 					var pass_field = $('input[name=password]');
 
 					email_field.focus();
-					
+
         	/*demo.initChartist();
 
         	$.notify({
