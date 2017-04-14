@@ -201,3 +201,6 @@ body{
 .checkbox-inline{
   margin-left:5px !important;
 }
+.errorlist{
+  background-color: #000000;
+}
