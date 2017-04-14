@@ -3,12 +3,12 @@ from __future__ import unicode_literals
 from django.views.generic import FormView, RedirectView
 from django.shortcuts import redirect
 from django.contrib.auth import login, logout
-from .forms import LoginForm
+from django.contrib.auth.forms import AuthenticationForm
 from django.core.urlresolvers import reverse_lazy
 
 
 class LoginView(FormView):
-    form_class = LoginForm
+    form_class = AuthenticationForm
     success_url = reverse_lazy('dashboard')
 
     def dispatch(self, request, *args, **kwargs):

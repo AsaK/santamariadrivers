@@ -2,34 +2,19 @@
 from __future__ import unicode_literals
 
 from django.core import serializers
-from django.shortcuts import render, redirect
-from django.views.generic.edit import UpdateView, CreateView
+from django.shortcuts import redirect
+from django.views.generic.edit import UpdateView
+from django.views.generic.list import ListView
 from django.core.urlresolvers import reverse_lazy
 from .models import Motorista
 from .forms import MotoristaForm
-from django.http import HttpResponse, JsonResponse
-from django.core.paginator import Paginator
 
 
-# Create your views here.
-
-
-def listmotoristaview(request):
-    status = request.GET.get('status', None)
-    page = request.GET.get('page', None)
-    queryset = Motorista.objects.all()
-    paginator = Paginator(queryset, 10)
-    if status:
-        queryset = queryset.filter(status=status)
-        paginator = Paginator(queryset, 2)
-        if page:
-            message = serializers.serialize("json", paginator.page(page))
-        else:
-            message = serializers.serialize("json", paginator.page(1))
-        return HttpResponse(message, content_type="application/json")
-    else:
-        message = serializers.serialize("json", paginator.page(1))
-        return HttpResponse(message, content_type="application/json")
+class MotoristaList(ListView):
+    model = Motorista
+    template_name = 'admin.html'
+    context_object_name = 'Motoristas'
+    paginate_by = 10
 
 
 class UpdateMotoristaView(UpdateView):
