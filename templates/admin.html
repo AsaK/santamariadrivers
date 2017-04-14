@@ -137,11 +137,11 @@
         <h5 class="modal-title" id="myModalLabel">Porque o motorista não foi aprovado?</h5>
       </div>
       <div class="modal-body">
-      	<textarea rows="6" class="form-control form-control-custom" placeholder="Digite o motivo do motorista não ser aprovado"></textarea>
+      	<textarea id="modal_motivo_text" rows="6" class="form-control form-control-custom" placeholder="Digite o motivo do motorista não ser aprovado"></textarea>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default btn_square btn-fill" data-dismiss="modal">Cancelar</button>
-        <button type="button" class="btn btn-success btn_square btn-fill">Concluir</button>
+        <button type="button" class="btn btn-success btn_square btn-fill" id="btn_recusar_concluir">Concluir</button>
       </div>
     </div>
   </div>
@@ -300,6 +300,7 @@
 																			<p class="col-xs-6 col-md-2 font-light text-center">
 																				{% if motorista.status == 'E' %}
 																				<button class="btn btn-warning border-width-xs btn-xs btn-fill btn_square btn_pendente"
+																					data-id="{{ motorista.id }}"
 																					data-nome="{{ motorista.nome }}" data-email="{{ motorista.usuario.email }}" data-endereco="{{ motorista.endereco }}" data-dtnasc="{{ motorista.data_nascimento }}" data-rg="{{ motorista.rg }}" data-cpf="{{ motorista.cpf }}"
 																					data-ncnh="{{ motorista.cnh_numero }}" data-modelo="{{ motorista.modelo }}" data-ano="{{ motorista.ano }}" data-placa="{{ motorista.placa }}" data-dtexp="{{ motorista.cnh_primeira }}" data-dtval="{{ motorista.cnh_validade }}"
 																				>Pendente <i class="caret"></i></button>
@@ -424,6 +425,8 @@
 				var btn_pendente = $('.btn_pendente');
 				var btn_recusar = $("#btn_recusar");
 				var modal_motivo = $("#modal_motivo");
+				var btn_recusar_concluir = $("#btn_recusar_concluir");
+				var motivo_txt = $('#modal_motivo_text');
 
 				// $("#modal_confirm").modal('show');
 				// $("#btn_recusar").click(function(){
@@ -432,6 +435,7 @@
 				// });
 
 				btn_pendente.click(function(){
+					var id = $(this).attr('data-id');
 					var nome = $(this).attr('data-nome');$('#modal_nome').html(nome);
 					var email = $(this).attr('data-email');$('#modal_email').html(email);
 					var endereco = $(this).attr('data-endereco');$('#modal_endereco').html(endereco);
@@ -444,11 +448,22 @@
 					var dtexp = $(this).attr('data-dtexp');$('#modal_dtexp').html(dtexp);
 					var dtval = $(this).attr('data-dtval');$('#modal_dtval').html(dtval);
 					var placa = $(this).attr('data-placa');$('#modal_placa').html(placa);
+
 					modal_confirm.modal('show');
 
 					btn_recusar.click(function(){
 						modal_motivo.modal('show');
-
+						btn_recusar_concluir.click(function(){
+							var motivo_text = motivo_txt.val();
+							var motorista_id = id;
+							$.post('/changestatus',{
+								idMotorista:motorista_id,
+								status:"R",
+								motivo:motivo_txt
+							},function(retorno){
+								console.log(retorno);
+							});
+						});
 					});
 
 				});
