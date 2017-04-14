@@ -1,7 +1,10 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
 
-from django.core import serializers
+from django.http import HttpResponse
+from django.template.loader import render_to_string
+
+import tempfile
 from django.shortcuts import redirect
 from django.views.generic.edit import UpdateView
 from django.views.generic.list import ListView
@@ -49,3 +52,7 @@ def deletemotorista(request, idMotorista):
                 return redirect('drivers')
 
     return redirect('drivers')
+<<<<<<< HEAD
+=======
+
+>>>>>>> 14db255d69e5524e0bfc38deb042ba88e9225364

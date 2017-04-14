@@ -182,7 +182,7 @@
         <div class="content">
             <div class="container-fluid">
                 <div class="row">
-										<a href="#">
+										<a href="?status=">
                     <div class="col-lg-3 col-sm-6">
                         <div class="card">
                             <div class="content">
@@ -194,7 +194,7 @@
                                     </div>
                                     <div class="col-xs-7">
                                         <div class="numbers font-grey">
-                                            30
+                                            {{total_motoristas}}
 																						<p class="font-light">Motoristas</p>
                                         </div>
                                     </div>
@@ -203,7 +203,7 @@
                         </div>
                     </div>
 										</a>
-										<a href="#">
+										<a href="?status=E">
                     <div class="col-lg-3 col-sm-6">
                         <div class="card">
                             <div class="content">
@@ -215,7 +215,7 @@
                                     </div>
                                     <div class="col-xs-7">
                                         <div class="numbers font-grey">
-                                            10
+                                            {{motoristas_pendentes}}
 																						<p class="font-light">pendentes</p>
                                         </div>
                                     </div>
@@ -224,7 +224,7 @@
                         </div>
                     </div>
 										</a>
-										<a href="#">
+										<a href="?status=A">
                     <div class="col-lg-3 col-sm-6">
                         <div class="card">
                             <div class="content">
@@ -236,7 +236,7 @@
                                     </div>
                                     <div class="col-xs-7">
                                         <div class="numbers font-grey">
-                                            10
+                                            {{motoristas_aprovados}}
 																						<p class="font-light">Aprovados</p>
                                         </div>
                                     </div>
@@ -245,7 +245,7 @@
                         </div>
                     </div>
 										</a>
-										<a href="#">
+										<a href="?status=R">
                     <div class="col-lg-3 col-sm-6">
                         <div class="card">
                             <div class="content">
@@ -257,7 +257,7 @@
                                     </div>
                                     <div class="col-xs-7">
                                         <div class="numbers font-grey">
-                                            10
+                                            {{motoristas_rejeitados}}
 																						<p class="font-light">Recusados</p>
                                         </div>
                                     </div>
@@ -299,7 +299,10 @@
 																			</p>
 																			<p class="col-xs-6 col-md-2 font-light text-center">
 																				{% if motorista.status == 'E' %}
-																				<button class="btn btn-warning border-width-xs btn-xs btn-fill btn_square">Pendente <i class="caret"></i></button>
+																				<button class="btn btn-warning border-width-xs btn-xs btn-fill btn_square btn_pendente"
+																					data-nome="{{ motorista.nome }}" data-email="{{ motorista.usuario.email }}" data-endereco="motorista.endereco" data-dtnasc="motorista.data_nascimento" data-rg="motorista.rg" data-cpf="motorista.cpf"
+																					data-ncnh="{{ motorista.cnh_numero }}" data-modelo="{{ motorista }}" data-ano="{{ motorista }}" data-placa="{{ motorista }}" data-dtexp="{{ motorista }}" data-dtval="{{ motorista }}"
+																				>Pendente <i class="caret"></i></button>
 																				{% endif %}
 																				{% if motorista.status == 'A' %}
 																				<button class="btn btn-success btn-xs btn-simple"><b>Aprovado</b></button>
@@ -417,12 +420,19 @@
 	<script type="text/javascript">
     	$(document).ready(function(){
 
-				//$("#modal_confirm").modal('show');
+				var modal_confirm = $("#modal_confirm");
+				var btn_pendente = $('.btn_pendente');
+				var btn_recusar = $("#btn_recusar");
+				var modal_motivo = $("#modal_motivo");
 
+				// $("#modal_confirm").modal('show');
+				// $("#btn_recusar").click(function(){
+				// 	$("#modal_confirm").modal('show');
+				// 	$("#modal_motivo").modal('show');
+				// });
 
-				$("#btn_recusar").click(function(){
-					$("#modal_confirm").modal('show');
-					$("#modal_motivo").modal('show');
+				btn_pendente.click(function(){
+					modal_confirm.modal('show');
 				});
 
     	});

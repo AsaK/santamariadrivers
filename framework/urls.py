@@ -28,5 +28,6 @@ urlpatterns = [
     url(r'^logout$', LogoutView.as_view(), name='logout'),
     url(r'^register/', TemplateView.as_view(template_name='register.html'), name='register'),
     url(r'^base/', include('base.urls')),
+    url(r'^api/', include('api.urls')),
 
 ]
