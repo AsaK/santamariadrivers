@@ -81,9 +81,7 @@ REST_FRAMEWORK = {
     ]
 }
 
-ALLOWED_HOSTS = {
-    '192.168.0.35'
-}
+
 
 WSGI_APPLICATION = 'framework.wsgi.application'
 
@@ -143,4 +141,3 @@ STATICFILES_DIRS = (
 
 
 AUTH_USER_MODEL = 'base.Usuario'
-

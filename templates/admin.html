@@ -53,29 +53,29 @@
 							<p class="font-grey margin-bottom-xs font-xs">
 								Nome do motorista
 							</p>
-							<h4 class="nomargin-top font-sm font-bold">Erickson Holanda Vasconcelos</h4>
+							<h4 class="nomargin-top font-sm font-bold" id="modal_nome">Erickson Holanda Vasconcelos</h4>
 							<p class="font-grey margin-bottom-xs font-xs">
 								Email
 							</p>
-							<h4 class="nomargin-top font-sm font-bold">e.holanda@supportclik.com</h4>
+							<h4 class="nomargin-top font-sm font-bold" id="modal_email">e.holanda@supportclik.com</h4>
 							<p class="font-grey margin-bottom-xs font-xs">
 								Endereço
 							</p>
-							<h4 class="nomargin-top font-sm font-bold">Av. Tente Felipe Bandeira, Recife/PE</h4>
+							<h4 class="nomargin-top font-sm font-bold" id="modal_endereco">Av. Tente Felipe Bandeira, Recife/PE</h4>
 						</div>
 						<div class="col-xs-offset-4 col-xs-8 col-md-offset-0 col-md-3">
 							<p class="font-grey margin-bottom-xs font-xs">
 								Data de nascimento
 							</p>
-							<h4 class="nomargin-top font-sm font-bold">06/05/1991</h4>
+							<h4 class="nomargin-top font-sm font-bold" id="modal_dtnasc">06/05/1991</h4>
 							<p class="font-grey margin-bottom-xs font-xs">
 								RG
 							</p>
-							<h4 class="nomargin-top font-sm font-bold">7.791.855</h4>
+							<h4 class="nomargin-top font-sm font-bold" id="modal_rg">7.791.855</h4>
 							<p class="font-grey margin-bottom-xs font-xs">
 								CPF
 							</p>
-							<h4 class="nomargin-top font-sm font-bold">079.848.344-07</h4>
+							<h4 class="nomargin-top font-sm font-bold" id="modal_cpf">079.848.344-07</h4>
 						</div>
 						<div class="clear"></div>
 					</div>
@@ -300,8 +300,8 @@
 																			<p class="col-xs-6 col-md-2 font-light text-center">
 																				{% if motorista.status == 'E' %}
 																				<button class="btn btn-warning border-width-xs btn-xs btn-fill btn_square btn_pendente"
-																					data-nome="{{ motorista.nome }}" data-email="{{ motorista.usuario.email }}" data-endereco="motorista.endereco" data-dtnasc="motorista.data_nascimento" data-rg="motorista.rg" data-cpf="motorista.cpf"
-																					data-ncnh="{{ motorista.cnh_numero }}" data-modelo="{{ motorista }}" data-ano="{{ motorista }}" data-placa="{{ motorista }}" data-dtexp="{{ motorista }}" data-dtval="{{ motorista }}"
+																					data-nome="{{ motorista.nome }}" data-email="{{ motorista.usuario.email }}" data-endereco="{{ motorista.endereco }}" data-dtnasc="{{ motorista.data_nascimento }}" data-rg="{{ motorista.rg }}" data-cpf="{{ motorista.cpf }}"
+																					data-ncnh="{{ motorista.cnh_numero }}" data-modelo="{{ motorista.modelo }}" data-ano="{{ motorista.ano }}" data-placa="{{ motorista.placa }}" data-dtexp="{{ motorista.cnh_primeira }}" data-dtval="{{ motorista.cnh_validade }}"
 																				>Pendente <i class="caret"></i></button>
 																				{% endif %}
 																				{% if motorista.status == 'A' %}
@@ -432,6 +432,18 @@
 				// });
 
 				btn_pendente.click(function(){
+					var nome = $(this).attr('data-nome');$('#modal_nome').html(nome);
+					var email = $(this).attr('data-email');$('#modal_email').html(email);
+					var endereco = $(this).attr('data-endereco');$('#modal_endereco').html(endereco);
+					var dtnasc = $(this).attr('data-dtnasc');$('#modal_dtnasc').html(dtnasc);
+					var rg = $(this).attr('data-rg');$('#modal_rg').html(rg);
+					var cpf = $(this).attr('data-cpf');$('#modal_cpf').html(cpf);
+					var ncnh = $(this).attr('data-ncnh');
+					var modelo = $(this).attr('data-modelo');
+					var ano = $(this).attr('data-ano');
+					var dtexp = $(this).attr('data-dtexp');
+					var dtval = $(this).attr('data-dtval');
+					var placa = $(this).attr('data-placa');
 					modal_confirm.modal('show');
 				});
 
