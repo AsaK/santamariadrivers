@@ -141,3 +141,6 @@ STATICFILES_DIRS = (
 
 
 AUTH_USER_MODEL = 'base.Usuario'
+
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_URL = '/media/'
