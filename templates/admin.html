@@ -92,29 +92,29 @@
 							<p class="font-grey margin-bottom-xs font-xs">
 								Número da CNH
 							</p>
-							<h4 class="nomargin-top font-sm font-bold">22111223312</h4>
+							<h4 class="nomargin-top font-sm font-bold" id="modal_ncnh">22111223312</h4>
 							<p class="font-grey margin-bottom-xs font-xs">
 								Modelo do automóvel
 							</p>
-							<h4 class="nomargin-top font-sm font-bold">Chevrolet Zafira</h4>
+							<h4 class="nomargin-top font-sm font-bold" id="modal_modelo">Chevrolet Zafira</h4>
 							<p class="font-grey margin-bottom-xs font-xs">
 								Ano do automóvel
 							</p>
-							<h4 class="nomargin-top font-sm font-bold">2010</h4>
+							<h4 class="nomargin-top font-sm font-bold" id="modal_ano">2010</h4>
 						</div>
 						<div class="col-xs-offset-4 col-xs-8 col-md-offset-0 col-md-3">
 							<p class="font-grey margin-bottom-xs font-xs">
 								Data de expedição
 							</p>
-							<h4 class="nomargin-top font-sm font-bold">21/05/2009</h4>
+							<h4 class="nomargin-top font-sm font-bold" id="modal_dtexp">21/05/2009</h4>
 							<p class="font-grey margin-bottom-xs font-xs">
 								Data de validade
 							</p>
-							<h4 class="nomargin-top font-sm font-bold">22/05/2020</h4>
+							<h4 class="nomargin-top font-sm font-bold" id="modal_dtval">22/05/2020</h4>
 							<p class="font-grey margin-bottom-xs font-xs">
 								Placa do automóvel
 							</p>
-							<h4 class="nomargin-top font-sm font-bold">KGB - 1954</h4>
+							<h4 class="nomargin-top font-sm font-bold" id="modal_placa">KGB - 1954</h4>
 						</div>
 						<div class="clear"></div>
 					</div>
@@ -438,14 +438,22 @@
 					var dtnasc = $(this).attr('data-dtnasc');$('#modal_dtnasc').html(dtnasc);
 					var rg = $(this).attr('data-rg');$('#modal_rg').html(rg);
 					var cpf = $(this).attr('data-cpf');$('#modal_cpf').html(cpf);
-					var ncnh = $(this).attr('data-ncnh');
-					var modelo = $(this).attr('data-modelo');
-					var ano = $(this).attr('data-ano');
-					var dtexp = $(this).attr('data-dtexp');
-					var dtval = $(this).attr('data-dtval');
-					var placa = $(this).attr('data-placa');
+					var ncnh = $(this).attr('data-ncnh');$('#modal_ncnh').html(ncnh);
+					var modelo = $(this).attr('data-modelo');$('#modal_modelo').html(modelo);
+					var ano = $(this).attr('data-ano');$('#modal_ano').html(ano);
+					var dtexp = $(this).attr('data-dtexp');$('#modal_dtexp').html(dtexp);
+					var dtval = $(this).attr('data-dtval');$('#modal_dtval').html(dtval);
+					var placa = $(this).attr('data-placa');$('#modal_placa').html(placa);
 					modal_confirm.modal('show');
+
+					btn_recusar.click(function(){
+						modal_motivo.modal('show');
+
+					});
+
 				});
+
+
 
     	});
 	</script>
