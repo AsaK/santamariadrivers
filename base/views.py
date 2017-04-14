@@ -58,29 +58,28 @@ def deletemotorista(request, idMotorista):
 
 @method_decorator(csrf_exempt, name='dispatch')
 def change_motorista_status(request):
-    if request.method == 'POST':
-        idMotorista = request.POST.get('idMotorista', None)
-        status = request.POST.get('status', None)
-        motivo = request.POST.get('motivo', None)
+    idMotorista = request.POST.get('idMotorista', None)
+    status = request.POST.get('status', None)
+    motivo = request.POST.get('motivo', None)
 
-        if idMotorista:
-            try:
-                objMotorista = Motorista.objects.get(id=idMotorista)
-            except Motorista.DoesNotExist:
-                objMotorista = None
-                message = {
-                    'status': False
-                }
-                return JsonResponse(message)
-            if objMotorista:
-                message = {}
-                if status == 'R':
-                    objMotorista.status = 'R'
-                    objMotorista.motivo = motivo
-                else:
-                    objMotorista.status = status
-                message = {
-                    'status': True
-                }
+    if idMotorista:
+        try:
+            objMotorista = Motorista.objects.get(id=idMotorista)
+        except Motorista.DoesNotExist:
+            objMotorista = None
+            message = {
+                'status': False
+            }
+            return JsonResponse(message)
+        if objMotorista:
+            message = {}
+            if status == 'R':
+                objMotorista.status = 'R'
+                objMotorista.motivo = motivo
+            else:
+                objMotorista.status = status
+            message = {
+                'status': True
+            }
 
-                return JsonResponse(message)
+            return JsonResponse(message)
