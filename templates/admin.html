@@ -121,7 +121,7 @@
 	      </div>
 	      <div class="modal-footer">
 					<!-- <button type="button" class="btn btn-primary btn-simple pull-left"><i class="ti-pencil font-sm"></i> Editar</button> -->
-	        <button type="button" class="btn btn_square btn-success btn-fill"><i class="ti-check font-sm"></i> Aprovar</button>
+	        <button type="button" class="btn btn_square btn-success btn-fill" id="btn_aprovar"><i class="ti-check font-sm"></i> Aprovar</button>
 	        <button type="button" class="btn btn-danger btn_square btn-fill" data-dismiss="modal" id="btn_recusar"><i class="ti-close font-sm"></i> Recusar</button>
 	      </div>
 	    </div><!-- /.modal-content -->
@@ -427,6 +427,7 @@
 				var modal_motivo = $("#modal_motivo");
 				var btn_recusar_concluir = $("#btn_recusar_concluir");
 				var motivo_txt = $('#modal_motivo_text');
+				var btn_aprovar = $('#btn_aprovar');
 
 				// $("#modal_confirm").modal('show');
 				// $("#btn_recusar").click(function(){
@@ -464,6 +465,24 @@
 								console.log(retorno);
 							});
 						});
+					});
+
+					btn_aprovar.click(function(){
+
+						var motorista_id = id;
+						$.post('/changestatus/',{
+							idMotorista:motorista_id,
+							status:"A",
+							motivo:""
+						},function(retorno){
+							console.log(retorno);
+							if(retorno.status==true){
+								location.reload();
+							}else{
+								alert('Ocorreu um erro durante a operação. Tente novamente mais tarde.');
+							}
+						});
+
 					});
 
 				});
