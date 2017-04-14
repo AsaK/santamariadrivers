@@ -13,7 +13,6 @@ from .forms import MotoristaForm
 class MotoristaList(ListView):
     model = Motorista
     template_name = 'admin.html'
-    context_object_name = 'Motoristas'
     paginate_by = 10
 
 
@@ -22,6 +21,7 @@ class UpdateMotoristaView(UpdateView):
     template_name = 'Motorista/motorista_update.html'
     form_class = MotoristaForm
     success_url = reverse_lazy('drivers')
+
 
 def deletemotorista(request, idMotorista):
 
