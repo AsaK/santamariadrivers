@@ -79,6 +79,7 @@ def change_motorista_status(request):
                     objMotorista.motivo = motivo
                 else:
                     objMotorista.status = status
+                objMotorista.save()
                 message = {
                     'status': True
                 }
