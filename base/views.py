@@ -9,6 +9,10 @@ from django.shortcuts import redirect
 from django.views.generic.edit import UpdateView
 from django.views.generic.list import ListView
 from django.core.urlresolvers import reverse_lazy
+from .serializer import MotoristaSerializer
+from rest_framework.response import Response
+from rest_framework.views import APIView
+from django.shortcuts import render
 from .models import Motorista
 from .forms import MotoristaForm
 
@@ -53,3 +57,10 @@ def deletemotorista(request, idMotorista):
 
     return redirect('drivers')
 
+
+class MotoristaListView(APIView):
+    serializer_class = MotoristaSerializer
+
+    def get(self,request, format=None):
+        serializer = self.serializer_class(Motorista.objects.all(), many=True)
+        return Response(serializer.data)
