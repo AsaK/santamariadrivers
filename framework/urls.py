@@ -25,6 +25,7 @@ urlpatterns = [
     url(r'^motorista/', LoginView.as_view(template_name='login_motorista.html'), name='login_motorista'),
     url(r'^admin/', LoginView.as_view(template_name='login_admin.html'), name='login_admin'),
     url(r'^logout$', LogoutView.as_view(), name='logout'),
+    url(r'^register$', TemplateView.as_view('register.html'), name='register')
     url(r'^base/', include('base.urls')),
 
 ]
