@@ -86,7 +86,6 @@ class Motorista(models.Model):
     cnh_validade = models.DateField(verbose_name='Validade CNH')
     cnh_categoria = models.CharField(max_length=2, verbose_name='Categoria CNH')
     motivo = models.TextField(max_length=150, verbose_name='Motivo de recusa', blank=True, null=True)
-    marca = models.CharField(max_length=30, verbose_name='Marca do carro')
     modelo = models.CharField(max_length=30, verbose_name='Modelo do carro')
     cor = models.CharField(max_length=10, verbose_name='Cor do carro')
     placa = models.CharField(max_length=7, verbose_name='Placa do carro')
