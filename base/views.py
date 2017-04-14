@@ -23,8 +23,12 @@ class MotoristaList(ListView):
         context['motoristas_rejeitados'] = Motorista.objects.filter(status='R').count()
         return context
 
-
-
+    def get_queryset(self):
+        queryset = super(MotoristaList, self).get_queryset()
+        status = self.request.GET.get('status', None)
+        if status:
+            queryset = queryset.filter(status=status)
+        return queryset
 
 class UpdateMotoristaView(UpdateView):
     model = Motorista
