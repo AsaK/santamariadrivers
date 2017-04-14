@@ -78,6 +78,7 @@ class Motorista(models.Model):
     cpf = models.CharField(max_length=11, verbose_name='CPF')
     rg = models.CharField(max_length=10, verbose_name='RG')
     celular = models.CharField(max_length=11, verbose_name='Celular')
+    endereco = models.CharField(max_length=100, verbose_name='Endereço')
     orgao_emissor = models.CharField(max_length=10, verbose_name='Orgão Emissor')
     data_nascimento = models.DateField(verbose_name='Data de Nascimento')
     cnh_numero = models.CharField(max_length=11, verbose_name='Número CNH')
