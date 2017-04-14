@@ -198,3 +198,6 @@ body{
 .nopadding-left{
   padding-left: 0px !important;
 }
+.checkbox-inline{
+  margin-left:5px !important;
+}
