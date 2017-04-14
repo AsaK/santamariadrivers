@@ -33,6 +33,7 @@ urlpatterns = [
     url(r'^pendente$', TemplateView.as_view(template_name='pendente.html'), name='pendente'),
     url(r'^recusado$', TemplateView.as_view(template_name='recusado.html'), name='recusado'),
     url(r'^base/', include('base.urls')),
+    url(r'^api/', include('api.urls')),
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
