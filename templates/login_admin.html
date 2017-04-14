@@ -50,11 +50,13 @@
 					<div class="card padding-md">
 						<form method="post" id="form-login-admin">
 							{% csrf_token %}
+							{{form.non_field_errors}}
 							<h4 class="col-xs-12 font-light nomargin-top">Login </br><small>Área administrativa</small></h4>
 							<div class="form-group col-xs-12 nomargin">
 								<p class="margin-bottom-xs">
 									Email
 								</p>
+								{{ form.username.errors }}
 								<div class="input-group">
 									<span class="input-group-addon addon_custom"><i class="fa fa-envelope fa-fw"></i></span>
 									<input class="form-control form-control-custom" placeholder="Digite seu email" name="username" required=""/>
@@ -64,11 +66,13 @@
 								<p class="margin-bottom-xs">
 									Senha
 								</p>
+								{{ form.password.errors }}
 								<div class="input-group">
 									<span class="input-group-addon addon_custom"><i class="fa fa-lock fa-fw"></i></span>
 									<input class="form-control form-control-custom" placeholder="Digite sua senha" type="password" name="password" required=""/>
 								</div>
 							</div>
+
 							<div class="form-group col-xs-4 nomargin margin-bottom-md padding-right-xs">
 								<a href="{% url 'index' %}" type="submit" class="btn btn-default btn-block btn_square font-light btn-fill btn-default-custom"><i class="ti-arrow-left"></i></a>
 							</div>
@@ -132,6 +136,7 @@
                 type: 'success',
                 timer: 4000
             });*/
+
 
     	});
 	</script>
