@@ -18,6 +18,20 @@ class MotoristaList(ListView):
     template_name = 'admin.html'
     paginate_by = 10
 
+    def get_context_data(self, **kwargs):
+        context = super(MotoristaList, self).get_context_data(**kwargs)
+        context['total_motoristas'] = Motorista.objects.all().count()
+        context['motoristas_pendentes'] = Motorista.objects.filter(status='E').count()
+        context['motoristas_aprovados'] = Motorista.objects.filter(status='A').count()
+        context['motoristas_rejeitados'] = Motorista.objects.filter(status='R').count()
+        return context
+
+    def get_queryset(self):
+        queryset = super(MotoristaList, self).get_queryset()
+        status = self.request.GET.get('status', None)
+        if status:
+            queryset = queryset.filter(status=status)
+        return queryset
 
 class UpdateMotoristaView(UpdateView):
     model = Motorista
