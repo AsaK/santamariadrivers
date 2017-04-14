@@ -82,6 +82,7 @@ REST_FRAMEWORK = {
     ]
 }
 
+
 WSGI_APPLICATION = 'framework.wsgi.application'
 
 
@@ -140,4 +141,3 @@ STATICFILES_DIRS = (
 
 
 AUTH_USER_MODEL = 'base.Usuario'
-
