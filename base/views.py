@@ -20,7 +20,7 @@ from .forms import MotoristaForm
 class MotoristaList(ListView):
     model = Motorista
     template_name = 'admin.html'
-    paginate_by = 10
+    paginate_by = 1
 
     def get_context_data(self, **kwargs):
         context = super(MotoristaList, self).get_context_data(**kwargs)
@@ -56,7 +56,6 @@ def deletemotorista(request, idMotorista):
                 return redirect('drivers')
 
     return redirect('drivers')
-
 
 class MotoristaListView(APIView):
     serializer_class = MotoristaSerializer
