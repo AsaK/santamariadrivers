@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
 
-from django.http import HttpResponse
+from django.http import JsonResponse
 from django.template.loader import render_to_string
 
 import tempfile
@@ -53,3 +53,37 @@ def deletemotorista(request, idMotorista):
                 return redirect('drivers')
 
     return redirect('drivers')
+
+
+def change_motorista_status(request):
+    if request.method == 'POST':
+        idMotorista = request.POST.get('idMotorista', None)
+        status = request.POST.get('status', None)
+        motivo = request.POST.get('motivo', None)
+
+        if idMotorista:
+            try:
+                objMotorista = Motorista.objects.get(id=idMotorista)
+            except Motorista.DoesNotExist:
+                objMotorista = None
+                message = {
+                    'status': False
+                }
+                return JsonResponse(message)
+            if objMotorista:
+                message = {}
+                if status == 'R':
+                    objMotorista.status = 'R'
+                    objMotorista.motivo = motivo
+                else:
+                    objMotorista.status = status
+                message = {
+                    'status': True
+                }
+
+                return JsonResponse(message)
+
+
+
+
+

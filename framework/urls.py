@@ -16,7 +16,7 @@ Including another URLconf
 from django.conf.urls import url, include
 from django.contrib import admin
 from core.views import LoginView, LogoutView, RegisterView
-from base.views import MotoristaList
+from base.views import MotoristaList, change_motorista_status
 from django.views.generic import TemplateView
 from django.conf.urls.static import static
 from django.conf import settings
@@ -29,6 +29,7 @@ urlpatterns = [
     url(r'^admin/', LoginView.as_view(template_name='login_admin.html'), name='login_admin'),
     url(r'^logout$', LogoutView.as_view(), name='logout'),
     url(r'^register/', RegisterView, name='register'),
+    url(r'^changestatus/', change_motorista_status, name='changestatus'),
     url(r'^aprovado$', TemplateView.as_view(template_name='aprovado.html'), name='aprovado'),
     url(r'^pendente$', TemplateView.as_view(template_name='pendente.html'), name='pendente'),
     url(r'^recusado$', TemplateView.as_view(template_name='recusado.html'), name='recusado'),
