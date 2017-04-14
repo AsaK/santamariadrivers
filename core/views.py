@@ -57,6 +57,11 @@ def RegisterView(request):
         placa = request.POST.get('automovel_placa', None)
         cor = request.POST.get('automovel_cor', None)
         carro_foto = request.FILES['arquivo_foto_automovel']
+        cnhA = request.POST.get('checkboxA', None)
+        if cnhA:
+            cnhA = 'A'
+        cnhalt = request.POST.get('radio1', None)
+
 
         try:
             objUsuario = Usuario.objects.get(email=email)
@@ -87,6 +92,7 @@ def RegisterView(request):
             objMotorista.ano = ano
             objMotorista.cor = cor
             objMotorista.placa = placa
+            objMotorista.cnh_categoria = '{0}'.format(cnhA + cnhalt)
 
             fileSystem =FileSystemStorage()
             fileName = fileSystem.save(arquivo_foto.name, arquivo_foto)
@@ -102,4 +108,4 @@ def RegisterView(request):
 
             objMotorista.save()
 
-            return HttpResponse('Cadastro efetuado')
+            return render(request, '')
