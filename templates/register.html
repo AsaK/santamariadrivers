@@ -1,0 +1,284 @@
+{% load static %}
+<!doctype html>
+<html lang="en" >
+<head>
+	<meta charset="utf-8" />
+	<link rel="apple-touch-icon" sizes="76x76" href="{% static 'assets/img/apple-icon.png' %}">
+	<link rel="icon" type="image/png" sizes="96x96" href="{% static 'assets/img/favicon.pn' %}g">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+
+	<title>Colégio Santa Emília - Área Administrativa</title>
+
+	<meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
+    <meta name="viewport" content="width=device-width" />
+
+
+    <!-- Bootstrap core CSS     -->
+    <link href="{% static 'assets/css/bootstrap.min.css' %}" rel="stylesheet" />
+
+    <!-- Animation library for notifications   -->
+    <link href="{% static 'assets/css/animate.min.css' %}" rel="stylesheet"/>
+
+    <!--  Paper Dashboard core CSS    -->
+    <link href="{% static 'assets/css/paper-dashboard.css' %}" rel="stylesheet"/>
+
+
+    <!--  CSS for Demo Purpose, don't include it in your project     -->
+    <link href="{% static 'assets/css/demo.css' %}" rel="stylesheet" />
+
+
+    <!--  Fonts and icons     -->
+    <link href="http://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" rel="stylesheet">
+    <link href='https://fonts.googleapis.com/css?family=Muli:400,300' rel='stylesheet' type='text/css'>
+    <link href="{% static 'assets/css/themify-icons.css' %}" rel="stylesheet">
+		<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
+		<link href="{% static 'assets/css/custom.css' %}" rel="stylesheet" />
+
+</head>
+<body>
+
+<div class="wrapper" id="wrapper_loginmotorista">
+
+				<div class="col-xs-9 col-md-3 centered" id="content_logo_login">
+					<div class="col-xs-8 col-md-6 centered">
+						<img src="{% static 'assets/img/logo.png' %}" class="img-responsive" id="logo_entrypoint"/>
+					</div>
+				</div>
+				<div class="clear"></div>
+
+				<div class="col-xs-11 col-md-6 centered" id="login_motorista">
+					<div class="card padding-md">
+						<form method="post">
+							{% csrf_token %}
+							<h3 class="col-xs-12 font-light nomargin-top border-line">Crie sua conta</h3>
+							<h5 class="col-xs-12 nomargin-top font-bold">Dados pessoais</h5>
+							<div class="form-group col-xs-4 nomargin">
+								<p class="margin-bottom-xs">
+									Nome
+								</p>
+								<input class="form-control form-control-custom" placeholder="Digite seu nome" name="name" required=""/>
+							</div>
+							<div class="form-group col-xs-4 nomargin">
+								<p class="margin-bottom-xs">
+									Email
+								</p>
+								<input class="form-control form-control-custom" placeholder="Digite seu email" name="email" required="" type="email"/>
+							</div>
+							<div class="form-group col-xs-4 nomargin">
+								<p class="margin-bottom-xs">
+									Celuar
+								</p>
+								<input class="form-control form-control-custom" placeholder="Digite seu celular" name="celular" required=""/>
+							</div>
+							<div class="form-group col-xs-4 nomargin">
+								<p class="margin-bottom-xs">
+									Data de nascimento
+								</p>
+								<input class="form-control form-control-custom" placeholder="Digite sua data de nascimento" name="dtnasc" required=""/>
+							</div>
+							<div class="form-group col-xs-4 nomargin">
+								<p class="margin-bottom-xs">
+									RG
+								</p>
+								<input class="form-control form-control-custom" placeholder="Digite seu RG" name="rg" required=""/>
+							</div>
+							<div class="form-group col-xs-4 nomargin">
+								<p class="margin-bottom-xs">
+									CPF
+								</p>
+								<input class="form-control form-control-custom" placeholder="Digite seu cpf" name="cpf" required=""/>
+							</div>
+							<div class="form-group col-xs-8 nomargin">
+								<p class="margin-bottom-xs">
+									Endereço
+								</p>
+								<input class="form-control form-control-custom" placeholder="Digite sua endereço" type="endereco" name="password" required=""/>
+							</div>
+							<div class="form-group col-xs-4 nomargin">
+								<p class="margin-bottom-xs">
+									Foto
+								</p>
+								<input class="form-control form-control-custom" type="file" name="arquivo_foto" required=""/>
+							</div>
+							<div class="clear">
+
+							</div>
+							<div class="clear border-line margin-top-md">
+
+							</div>
+
+							<h5 class="col-xs-12 nomargin-top font-bold margin-top-md">Informações da CNH</h5>
+							<div class="form-group col-xs-4 nomargin">
+								<p class="margin-bottom-xs">
+									Número
+								</p>
+								<input class="form-control form-control-custom" placeholder="Digite seu n da CNH" type="text" name="ncnh" required=""/>
+							</div>
+							<div class="form-group col-xs-4 nomargin">
+								<p class="margin-bottom-xs">
+									Data de expedição
+								</p>
+								<input class="form-control form-control-custom" placeholder="Digite a data de expedição" type="text" name="dtcnhexp" required=""/>
+							</div>
+							<div class="form-group col-xs-4 nomargin">
+								<p class="margin-bottom-xs">
+									Data de validade
+								</p>
+								<input class="form-control form-control-custom" placeholder="Digite a data de validade" type="text" name="dtcnhval" required=""/>
+							</div>
+							<div class="form-group col-xs-12 nomargin">
+								<p class="margin-bottom-xs">
+									Categoria
+								</p>
+								<div class="checkbox checkbox-inline nomargin" style="margin-top:-12px;">
+								   <input id="checkboxA" type="checkbox">
+								   <label for="checkboxA" class="nopadding-left" name="cat_a">
+									   A
+								   </label>
+							   </div>
+								 <div class="checkbox checkbox-inline">
+ 								   <input id="checkboxA" type="checkbox" name="cat_b">
+ 								   <label for="checkboxA" class="nopadding-left">
+ 									   B
+ 								   </label>
+ 							   </div>
+								 <div class="checkbox checkbox-inline">
+ 								   <input id="checkboxA" type="checkbox" name="cat_c">
+ 								   <label for="checkboxA" class="nopadding-left">
+ 									   C
+ 								   </label>
+ 							   </div>
+								 <div class="checkbox checkbox-inline">
+ 								   <input id="checkboxA" type="checkbox" name="cat_d">
+ 								   <label for="checkboxA" class="nopadding-left">
+ 									   D
+ 								   </label>
+ 							   </div>
+								 <div class="checkbox checkbox-inline">
+ 								   <input id="checkboxA" type="checkbox" name="cat_e">
+ 								   <label for="checkboxA" class="nopadding-left">
+ 									   E
+ 								   </label>
+ 							   </div>
+							</div>
+
+							<div class="clear">
+
+							</div>
+							<div class="clear border-line margin-top-md">
+
+							</div>
+
+							<h5 class="col-xs-12 nomargin-top font-bold margin-top-md">Informações do veículo</h5>
+							<div class="form-group col-xs-3 nomargin">
+								<p class="margin-bottom-xs">
+									Modelo
+								</p>
+								<input class="form-control form-control-custom" placeholder="Digite o modelo" type="text" name="automovel_modelo" required=""/>
+							</div>
+							<div class="form-group col-xs-3 nomargin">
+								<p class="margin-bottom-xs">
+									Ano
+								</p>
+								<input class="form-control form-control-custom" placeholder="Digite o ano" type="text" name="automovel_ano" required=""/>
+							</div>
+							<div class="form-group col-xs-3 nomargin">
+								<p class="margin-bottom-xs">
+									Placa
+								</p>
+								<input class="form-control form-control-custom font-upper" placeholder="Digite a placa" type="text" name="automovel_placa" required=""/>
+							</div>
+							<div class="form-group col-xs-3 nomargin">
+								<p class="margin-bottom-xs">
+									Foto
+								</p>
+								<input class="form-control form-control-custom" type="file" name="arquivo_foto_automovel" required=""/>
+							</div>
+
+							<div class="clear">
+
+							</div>
+							<div class="clear margin-top-md">
+
+							</div>
+
+
+							<div class="form-group col-xs-12 nomargin">
+								<p>
+									Ao registrar-se, você estará concordando com os <a>termos de uso</a>.
+								</p>
+							</div>
+
+
+							<div class="clear">
+
+							</div>
+							<div class="clear border-line margin-top-md">
+
+							</div>
+
+							<div class="form-group col-xs-4 nomargin margin-bottom-md padding-right-xs">
+								<a href="{% url 'login_motorista' %}" type="submit" class="btn btn-default btn-block btn_square font-light btn-fill btn-default-custom"><i class="ti-arrow-left"></i></a>
+							</div>
+							<div class="form-group col-xs-8 nomargin margin-bottom-md  padding-left-xs">
+								<button type="submit" class="btn btn-primary btn-block btn_square font-light btn-fill btn-primary-custom">Cadastrar-se</button>
+							</div>
+							<div class="clear"></div>
+
+					</form>
+				</div>
+				<div class="clear margin-bottom-md" style="height:50px;"></div>
+
+
+</div>
+
+<div id="footer_entrypoint_" class="text-center">
+	<div class="copyright text-center">
+		Desenvolvido com <i class="fa fa-heart heart" style="color:red"></i> pelos <b>piratas da casa 15</b>
+	</div>
+</div>
+
+
+</body>
+
+<!--   Core JS Files   -->
+<script src="{% static 'assets/js/jquery-1.10.2.js' %}" type="text/javascript"></script>
+<script src="{% static 'assets/js/bootstrap.min.js' %}" type="text/javascript"></script>
+<script src="{% static 'assets/js/bootstrap-checkbox-radio.js' %}"></script>
+<script src="{% static 'assets/js/bootstrap-notify.js' %}"></script>
+<script src="{% static 'assets/js/paper-dashboard.js' %}"></script>
+<script src="{% static 'bower_components/jquery-mask-plugin/dist/jquery.mask.min.js' %}"></script>
+<script type="text/javascript">
+	$(document).ready(function(){
+
+		var celular_field = $('input[name=celular]');
+		celular_field.mask('(00) 9 0000-0000', {clearIfNotMatch: true});
+
+		var dtnasc_field = $('input[name=dtnasc]');
+		dtnasc_field.mask('00/00/0000', {clearIfNotMatch: true});
+
+		var rg_field = $('input[name=rg]');
+		rg_field.mask('0.000.000', {clearIfNotMatch: true});
+
+		var cpf_field = $('input[name=cpf]');
+		cpf_field.mask('000.000.000-00', {clearIfNotMatch: true});
+
+		var ncnh_field = $('input[name=ncnh]');
+		ncnh_field.mask('00000000000', {clearIfNotMatch: true});
+
+		var dtcnhexp_field = $('input[name=dtcnhexp]');
+		dtcnhexp_field.mask('00/00/0000', {clearIfNotMatch: true});
+
+		var dtcnhval_field = $('input[name=dtcnhval]');
+		dtcnhval_field.mask('00/00/0000', {clearIfNotMatch: true});
+
+		var automovel_ano_field = $('input[name=automovel_ano]');
+		automovel_ano_field.mask('0000', {clearIfNotMatch: true});
+
+		var automovel_placa_field = $('input[name=automovel_placa]');
+		automovel_placa_field.mask('AAA-0000');
+
+	});
+</script>
+
+</html>
