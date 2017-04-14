@@ -11,6 +11,8 @@ from django.views.generic.list import ListView
 from django.core.urlresolvers import reverse_lazy
 from .models import Motorista
 from .forms import MotoristaForm
+from django.utils.decorators import method_decorator
+from django.views.decorators.csrf import csrf_exempt
 
 
 class MotoristaList(ListView):
@@ -54,7 +56,7 @@ def deletemotorista(request, idMotorista):
 
     return redirect('drivers')
 
-
+@method_decorator(csrf_exempt, name='dispatch')
 def change_motorista_status(request):
     if request.method == 'POST':
         idMotorista = request.POST.get('idMotorista', None)
@@ -82,8 +84,3 @@ def change_motorista_status(request):
                 }
 
                 return JsonResponse(message)
-
-
-
-
-
