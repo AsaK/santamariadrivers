@@ -13,7 +13,7 @@ from .forms import MotoristaForm
 class MotoristaList(ListView):
     model = Motorista
     template_name = 'admin.html'
-    paginate_by = 10
+    paginate_by = 1
 
 
 class UpdateMotoristaView(UpdateView):

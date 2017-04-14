@@ -271,15 +271,15 @@
                     <div class="col-md-12">
                         <div class="card">
                             <div class="header">
-                                <h4 class="title font-bold margin-bottom-xs">Lista de motoristas <button class="btn btn-primary border-width-xs btn_square btn-fill pull-right btn-sm"><i class="ti-cloud-down font-sm"></i> <span class="hidden-xs">Baixar relatório</span></button></h4>
+                                <h4 class="title font-bold margin-bottom-xs">Lista de motoristas <button class="btn btn-primary border-width-xs btn_square btn-fill pull-right btn-sm btn-primary-custom"><i class="ti-cloud-down font-sm"></i> <span class="hidden-xs">Baixar relatório</span></button></h4>
 																<div class="clear margin-bottom-xs"></div>
 																<p class="category margin-bottom-xs hidden-xs">Confira a lista de motoristas cadastrados no sistema</p>
                             </div>
                             <div class="content">
 
-																<h5 class="col-md-6 font-bold">Motorista</h5>
-																<h5 class="col-md-2 font-bold hidden-xs">Email</h5>
-																<h5 class="col-md-2 font-bold hidden-xs">Telefone</h5>
+																<h5 class="col-md-5 font-bold">Motorista</h5>
+																<h5 class="col-md-3 font-bold hidden-xs">Email</h5>
+																<h5 class="col-md-2 font-bold hidden-xs">Celular</h5>
 																<h5 class="col-md-2 text-center font-bold hidden-xs">Status</h5>
 
 																<div class="clear">
@@ -288,23 +288,31 @@
 
 																{% for motorista in object_list %}
 																		<div class="item-motorista">
-																			<p class="col-xs-12 col-md-6 font-light item-motorista-nome">
+																			<p class="col-xs-12 col-md-5 font-light item-motorista-nome">
 																				<a href="#">{{ motorista.nome }}</a>
 																			</p>
-																			<p class="col-xs-12 col-md-2 font-light">
+																			<p class="col-xs-12 col-md-3 font-light">
 																				<small>{{ motorista.usuario.email }}</small>
 																			</p>
 																			<p class="col-xs-6 col-md-2 font-light">
 																				<small>(81) 98475-5041</small>
 																			</p>
 																			<p class="col-xs-6 col-md-2 font-light text-center">
-																				<button class="btn btn-warning border-width-xs btn-xs btn-fill btn_square">{{ motorista.situacao }} <i class="caret"></i></button>
+																				{% if motorista.status == 'E' %}
+																				<button class="btn btn-warning border-width-xs btn-xs btn-fill btn_square">Pendente <i class="caret"></i></button>
+																				{% endif %}
+																				{% if motorista.status == 'A' %}
+																				<button class="btn btn-success btn-xs btn-simple"><b>Aprovado</b></button>
+																				{% endif %}
+																				{% if motorista.status == 'R' %}
+																				<button class="btn btn-danger btn-xs btn-simple"><b>Recusado</b></button>
+																				{% endif %}
 																			</p>
 																			<div class="clear"></div>
 																		</div>
 																{% endfor %}
 
-																<div class="col-xs-12">
+																<!-- <div class="col-xs-12">
 																	<nav aria-label="Page navigation">
 																	  <ul class="pagination">
 																	    <li>
@@ -324,32 +332,43 @@
 																	    </li>
 																	  </ul>
 																	</nav>
-																</div>
+																</div> -->
 
 																<div class="clear"></div>
 																{% if is_paginated %}
-																	{% if page_obj.has_previous %}
-													            <li class="page-item">
-													                <a class="page-link" href="?page={{ page_obj.previus_page_number }}">Anterior</a>
-													            </li>
-													        {% endif %}
-													        {% for page in page_obj.paginator.page_range %}
-													            {% if page_obj.number == page %}
-													                <li class="page-item active">
-													                    <a class="page-link">{{ page }}</a>
-													                </li>
-													            {% else %}
-													                <li class="page-item">
-													                    <a class="page-link" href="?page={{ page }}">{{ page }}</a>
-													                </li>
-													            {% endif %}
-													        {% endfor %}
-													        {% if page_obj.has_next %}
-													            <li class="page-item">
-													                <a class="page-link" href="?page={{ page_obj.next_page_number }}">Proxima</a>
-													            </li>
-													        {% endif %}
+																<div class="col-xs-12">
+																	<nav aria-label="Page navigation">
+																	  <ul class="pagination">
+																		{% if page_obj.has_previous %}
+																			<li>
+																				<a href="?page={{ page_obj.previus_page_number }}" aria-label="Previous">
+																					<span aria-hidden="true">&laquo;</span>
+																				</a>
+																			</li>
+														        {% endif %}
+														        {% for page in page_obj.paginator.page_range %}
+														            {% if page_obj.number == page %}
+														                <li class="page-item active">
+														                    <a class="page-link">{{ page }}</a>
+														                </li>
+														            {% else %}
+														                <li class="page-item">
+														                    <a class="page-link" href="?page={{ page }}">{{ page }}</a>
+														                </li>
+														            {% endif %}
+														        {% endfor %}
+														        {% if page_obj.has_next %}
+																			<li>
+																				<a href="?page={{ page_obj.next_page_number }}" aria-label="Next">
+																					<span aria-hidden="true">&raquo;</span>
+																				</a>
+																			</li>
+														        {% endif %}
+																		</ul>
+																	</nav>
+																</div>
 																{% endif %}
+																<div class="clear"></div>
                             </div>
                         </div>
                     </div>
@@ -398,7 +417,7 @@
 	<script type="text/javascript">
     	$(document).ready(function(){
 
-				$("#modal_confirm").modal('show');
+				//$("#modal_confirm").modal('show');
 
 
 				$("#btn_recusar").click(function(){
