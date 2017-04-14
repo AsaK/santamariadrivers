@@ -67,6 +67,7 @@ def RegisterView(request):
             objUsuario = Usuario.objects.get(email=email)
             if objUsuario:
                 messages.add_message(request, messages.ERROR, 'Já existe um usuário cadastrado com esse Email')
+                return redirect('register')
         except Usuario.DoesNotExist:
             objUsuario = None
         if not objUsuario:
@@ -108,4 +109,4 @@ def RegisterView(request):
 
             objMotorista.save()
 
-            return render(request, '')
+            return render(request, 'register_success.html')
