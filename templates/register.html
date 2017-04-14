@@ -46,81 +46,78 @@
 				</div>
 				<div class="clear"></div>
 
-				<div class="col-xs-11 col-md-6 centered" id="login_motorista">
+				<div class="col-md-6 centered" id="login_motorista">
 					<div class="card padding-md">
 						<form method="post">
 							{% csrf_token %}
 							<h3 class="col-xs-12 font-light nomargin-top border-line">Crie sua conta</h3>
 							<h5 class="col-xs-12 nomargin-top font-bold">Dados pessoais</h5>
-							<div class="form-group col-xs-4 nomargin">
+							<div class="form-group col-xs-12 col-md-4">
 								<p class="margin-bottom-xs">
 									Nome
 								</p>
 								<input class="form-control form-control-custom" placeholder="Digite seu nome" name="name" required=""/>
 							</div>
-							<div class="form-group col-xs-4 nomargin">
+							<div class="form-group col-xs-12 col-md-4">
 								<p class="margin-bottom-xs">
 									Email
 								</p>
 								<input class="form-control form-control-custom" placeholder="Digite seu email" name="email" required="" type="email"/>
 							</div>
-							<div class="form-group col-xs-4 nomargin">
+							<div class="form-group col-xs-12 col-md-4">
 								<p class="margin-bottom-xs">
 									Celuar
 								</p>
 								<input class="form-control form-control-custom" placeholder="Digite seu celular" name="celular" required=""/>
 							</div>
-							<div class="form-group col-xs-4 nomargin">
+							<div class="form-group col-xs-12 col-md-4">
 								<p class="margin-bottom-xs">
 									Data de nascimento
 								</p>
 								<input class="form-control form-control-custom" placeholder="Digite sua data de nascimento" name="dtnasc" required=""/>
 							</div>
-							<div class="form-group col-xs-4 nomargin">
+							<div class="form-group col-xs-12 col-md-4">
 								<p class="margin-bottom-xs">
 									RG
 								</p>
 								<input class="form-control form-control-custom" placeholder="Digite seu RG" name="rg" required=""/>
 							</div>
-							<div class="form-group col-xs-4 nomargin">
+							<div class="form-group col-xs-12 col-md-4">
 								<p class="margin-bottom-xs">
 									CPF
 								</p>
 								<input class="form-control form-control-custom" placeholder="Digite seu cpf" name="cpf" required=""/>
 							</div>
-							<div class="form-group col-xs-8 nomargin">
+							<div class="form-group col-xs-12 col-md-8">
 								<p class="margin-bottom-xs">
 									Endereço
 								</p>
 								<input class="form-control form-control-custom" placeholder="Digite sua endereço" type="endereco" name="password" required=""/>
 							</div>
-							<div class="form-group col-xs-4 nomargin">
+							<div class="form-group col-xs-12 col-md-4">
 								<p class="margin-bottom-xs">
 									Foto
 								</p>
 								<input class="form-control form-control-custom" type="file" name="arquivo_foto" required=""/>
 							</div>
-							<div class="clear">
+							<div class="clear"></div>
 
-							</div>
-							<div class="clear border-line margin-top-md">
-
-							</div>
+							<div class="clear border-line margin-top-md"></div>
 
 							<h5 class="col-xs-12 nomargin-top font-bold margin-top-md">Informações da CNH</h5>
-							<div class="form-group col-xs-4 nomargin">
+							<div class="form-group col-xs-12 col-md-4">
 								<p class="margin-bottom-xs">
 									Número
 								</p>
 								<input class="form-control form-control-custom" placeholder="Digite seu n da CNH" type="text" name="ncnh" required=""/>
 							</div>
-							<div class="form-group col-xs-4 nomargin">
+							<div class="form-group col-xs-12 col-md-4">
 								<p class="margin-bottom-xs">
 									Data de expedição
 								</p>
 								<input class="form-control form-control-custom" placeholder="Digite a data de expedição" type="text" name="dtcnhexp" required=""/>
 							</div>
-							<div class="form-group col-xs-4 nomargin">
+							<div class="form-group col-xs-12 col-md-4">
 								<p class="margin-bottom-xs">
 									Data de validade
 								</p>
@@ -130,92 +127,80 @@
 								<p class="margin-bottom-xs">
 									Categoria
 								</p>
-								<div class="checkbox checkbox-inline nomargin" style="margin-top:-12px;">
+								<div class="checkbox checkbox-inline nomargin" style="margin-top:-10px;margin-right:15px">
 								   <input id="checkboxA" type="checkbox">
 								   <label for="checkboxA" class="nopadding-left" name="cat_a">
 									   A
 								   </label>
 							   </div>
-								 <div class="checkbox checkbox-inline">
- 								   <input id="checkboxA" type="checkbox" name="cat_b">
- 								   <label for="checkboxA" class="nopadding-left">
- 									   B
- 								   </label>
- 							   </div>
-								 <div class="checkbox checkbox-inline">
- 								   <input id="checkboxA" type="checkbox" name="cat_c">
- 								   <label for="checkboxA" class="nopadding-left">
- 									   C
- 								   </label>
- 							   </div>
-								 <div class="checkbox checkbox-inline">
- 								   <input id="checkboxA" type="checkbox" name="cat_d">
- 								   <label for="checkboxA" class="nopadding-left">
- 									   D
- 								   </label>
- 							   </div>
-								 <div class="checkbox checkbox-inline">
- 								   <input id="checkboxA" type="checkbox" name="cat_e">
- 								   <label for="checkboxA" class="nopadding-left">
- 									   E
- 								   </label>
- 							   </div>
+								 <div class="radio radio-inline" style="margin-top:0px;">
+								 		<input type="radio" name="radio1" id="radio1" value="option1" checked="">
+								    <label for="radio1" style="padding:0px;">
+								        B
+								    </label>
+								 </div>
+								 <div class="radio radio-inline">
+								 		<input type="radio" name="radio1" id="radio1" value="option1">
+								    <label for="radio1" style="padding:0px;">
+								        C
+								    </label>
+								 </div>
+								 <div class="radio radio-inline">
+								 		<input type="radio" name="radio1" id="radio1" value="option1">
+								    <label for="radio1" style="padding:0px;">
+								        D
+								    </label>
+								 </div>
+								 <div class="radio radio-inline">
+								 		<input type="radio" name="radio1" id="radio1" value="option1" >
+								    <label for="radio1" style="padding:0px;">
+								        E
+								    </label>
+								 </div>
 							</div>
 
-							<div class="clear">
-
-							</div>
-							<div class="clear border-line margin-top-md">
-
-							</div>
+							<div class="clear"></div>
+							<div class="clear border-line margin-top-md"></div>
 
 							<h5 class="col-xs-12 nomargin-top font-bold margin-top-md">Informações do veículo</h5>
-							<div class="form-group col-xs-3 nomargin">
+							<div class="form-group col-xs-12 col-md-3">
 								<p class="margin-bottom-xs">
 									Modelo
 								</p>
 								<input class="form-control form-control-custom" placeholder="Digite o modelo" type="text" name="automovel_modelo" required=""/>
 							</div>
-							<div class="form-group col-xs-3 nomargin">
+							<div class="form-group col-xs-12 col-md-3">
 								<p class="margin-bottom-xs">
 									Ano
 								</p>
 								<input class="form-control form-control-custom" placeholder="Digite o ano" type="text" name="automovel_ano" required=""/>
 							</div>
-							<div class="form-group col-xs-3 nomargin">
+							<div class="form-group col-xs-12 col-md-3">
 								<p class="margin-bottom-xs">
 									Placa
 								</p>
-								<input class="form-control form-control-custom font-upper" placeholder="Digite a placa" type="text" name="automovel_placa" required=""/>
+								<input class="form-control form-control-custom" placeholder="Digite a placa" type="text" name="automovel_placa" required=""/>
 							</div>
-							<div class="form-group col-xs-3 nomargin">
+							<div class="form-group col-xs-12 col-md-3">
 								<p class="margin-bottom-xs">
 									Foto
 								</p>
 								<input class="form-control form-control-custom" type="file" name="arquivo_foto_automovel" required=""/>
 							</div>
 
-							<div class="clear">
-
-							</div>
-							<div class="clear margin-top-md">
-
-							</div>
+							<div class="clear"></div>
+							<div class="clear margin-top-md"></div>
 
 
-							<div class="form-group col-xs-12 nomargin">
+							<div class="form-group col-xs-12">
 								<p>
 									Ao registrar-se, você estará concordando com os <a>termos de uso</a>.
 								</p>
 							</div>
 
 
-							<div class="clear">
-
-							</div>
-							<div class="clear border-line margin-top-md">
-
-							</div>
+							<div class="clear"></div>
+							<div class="clear margin-top-md"></div>
 
 							<div class="form-group col-xs-4 nomargin margin-bottom-md padding-right-xs">
 								<a href="{% url 'login_motorista' %}" type="submit" class="btn btn-default btn-block btn_square font-light btn-fill btn-default-custom"><i class="ti-arrow-left"></i></a>
@@ -223,6 +208,7 @@
 							<div class="form-group col-xs-8 nomargin margin-bottom-md  padding-left-xs">
 								<button type="submit" class="btn btn-primary btn-block btn_square font-light btn-fill btn-primary-custom">Cadastrar-se</button>
 							</div>
+
 							<div class="clear"></div>
 
 					</form>
