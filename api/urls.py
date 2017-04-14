@@ -1,5 +1,5 @@
 from django.conf.urls import url
-from base.views import MotoristaListView
+from api.views import MotoristaListView
 
 helper_patterns = [
     url(r'^apimotorista/$', MotoristaListView.as_view(), name='apimotorista'),
